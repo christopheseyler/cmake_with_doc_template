@@ -27,7 +27,7 @@ Implementation Details
 
 The FSM implementation follows the classic Finite State Machine pattern with some additional features like state and transition overriding.
 
-.. code-block:: plantuml
+.. uml:: 
 
    @startuml
    
@@ -41,25 +41,19 @@ The FSM implementation follows the classic Finite State Machine pattern with som
        - {static} getTypeHash<T>(): size_t
      }
      
-     class Fsm {
-       + struct State {
-         + name: std::string
-         + on_do: std::function<void()>
-         + on_enter: std::function<void()>
-         + on_exit: std::function<void()>
-         + State()
-         + State(on_enter, on_do, on_exit, name)
-       }
+
+    package fsm {
        
-       - current_state_handler: std::shared_ptr<State>
+       
+
+     class Fsm {
+       
+       
+       - current_state_handler: std::shared_ptr<Fsm::State>
        - m_current_state_id: StateId
-       - state_handlers_list: std::unordered_map<StateId, std::shared_ptr<State>>
+       - state_handlers_list: std::unordered_map<StateId, std::shared_ptr<Fsm::State>>
        - transitions_override_list: std::unordered_map<std::pair<StateId, StateId>, StateId>
        
-       - enum InternalState {
-         None,
-         Exit
-       }
        
        + Fsm()
        + ~Fsm()
@@ -71,15 +65,28 @@ The FSM implementation follows the classic Finite State Machine pattern with som
        + exit(): void
        + is_exit(): bool
        + transition_override<StateIdT1, StateIdT2, StateIdT3>(prev_state_id, next_state_id, new_next_state_id)
-       + find_state<StateIdT>(state_id): std::optional<std::shared_ptr<State>>
+       + find_state<StateIdT>(state_id): std::optional<std::shared_ptr<Fsm::State>>
        # transition_to_state_id(state_id): void
        - find_transition_override(prev_state_id, next_state_id): StateId
      }
+
+     struct Fsm::State {
+         + name: std::string
+         + on_do: std::function<void()>
+         + on_enter: std::function<void()>
+         + on_exit: std::function<void()>
+         + State()
+         + State(on_enter, on_do, on_exit, name)
+      }
+
+     enum Fsm::InternalState {
+         None,
+         Exit
+       }
+       
    }
-   
-   app::utils.Fsm *-- app::utils.Fsm.State
-   app::utils.Fsm *-- app::utils.StateId
-   
+    
+   }
    @enduml
 
 Key Design Choices:
@@ -104,7 +111,7 @@ Tests Suite
 -----------
 
 .. needtable::
-    :filter: type == 'unittest' and 'dnfw' in tags and 'swc' in tags and 'fsm' in tags
+    :filter: type == 'unittest' and 'app' in tags and 'swc' in tags and 'fsm' in tags
     :style: table
     :columns: id;title as "Description"; checks as "Validates"
     :colwidths: 10,80,10

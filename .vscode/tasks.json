@@ -6,7 +6,7 @@
       "type": "shell",
       "command": "start",
       "args": [
-        "build/doc/sphinx-html/index.html"
+        "build/doc/sphinx-html/doc/src/index.html"
       ],
       "group": {
         "kind": "build",
