@@ -104,15 +104,17 @@ needs_default_layout = 'reqlayout'
 needs_extra_links = [
    {
       "option": "checks",
-      "incoming": "is checked by",
+      "incoming": "is_checked_by",
       "outgoing": "checks",
    },
    {
       "option": "implements",
-      "incoming": "is implemented by",
+      "incoming": "is_implemented_by",
       "outgoing": "implements",
    },
 
+
+   
    
    {
       "option": "triggers",

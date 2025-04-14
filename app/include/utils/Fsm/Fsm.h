@@ -12,6 +12,188 @@
 #include <cassert>
 #include <optional>
 
+/* Implementation Details
+
+    FSM Customization
+    -----------------
+
+
+    Transition override
+    ^^^^^^^^^^^^^^^^^^^
+
+    This is a specific feature of the FSM that allows to override the transition to a new state. This is useful when the FSM is already defined, and the implementation wants to customize the behavior
+    by adding new states in the existing FSM.
+
+    The transition override is done by registering a pair of *current state* and *next state* with a overriden *next state*.
+
+    For example to customize this FSM:
+
+    .. plantuml::
+
+        @startuml
+
+        [*]-> state1    
+        state1 -> state2
+        state2 -> state3
+        state3 -> [*]
+
+        @enduml
+
+    By inserting a new **new_state** between **state1** and **state2**:
+
+    .. plantuml::
+
+        @startuml
+
+        [*]-> state1    
+        state1 -> new_state
+        new_state -> state2 
+        state2 -> state3
+        state3 -> [*]
+
+        state new_state #red
+
+        @enduml
+
+    It requires the register of the transition override: <state1, state2> -> new_state
+
+    Usage
+    -----
+
+    The following example shows how to use the FSM component using methods of a class as state functions:
+
+    .. code:: cpp
+
+        class StateHandler
+        {
+        public:
+
+            StateHandler()  { register_states(); }
+
+            bool update() { return fsm.update(); }
+            void start() { fsm.start(); }
+
+        protected:
+
+            enum class StateDefinition
+            {
+                State1,
+                State2
+            };
+
+            void state1_on_do() { std::cout << "State1 on do" << std::endl; }
+            void state1_on_enter() { std::cout << "State1 on enter" << std::endl; }
+            void state1_on_exit() { std::cout << "State1 on exit" << std::endl; }
+
+            void state2_on_do() { std::cout << "State2 on do" << std::endl; }
+            void state2_on_enter() { std::cout << "State2 on enter" << std::endl; }
+            void state2_on_exit() { std::cout << "State2 on exit" << std::endl; }
+
+            Fsm fsm:
+
+            void register_states()
+            {
+                fsm.register_state(StateDefinition::State1, 
+                    [this](){state1_on_do(); fsm.transition_to(StateDefinition::State2);},
+                    [this](){state1_on_enter();},
+                    [this](){state1_on_exit();}
+                );
+
+                fsm.register_state(StateDefinition::State2, 
+                    [this](){state2_on_do();},
+                    [this](){state2_on_enter();},
+                    [this](){state2_on_exit();}
+                );
+
+                fsm.set_initial_state(StateDefinition::State1);
+            }
+        };
+
+
+    The following example shows how to use transition override to insert a new state between two existing states:
+
+    .. code:: cpp
+
+    class StateHandler
+        {
+        public:
+
+            StateHandler() { register_states(); }
+
+            bool update() { return fsm.update(); }
+            void start() { fsm.start(); }
+
+        protected:
+
+            enum class StateDefinition
+            {
+                State1,
+                State2
+            };
+
+            void state1_on_do() { std::cout << "State1 on do" << std::endl; }
+            void state1_on_enter() { std::cout << "State1 on enter" << std::endl; fsm.transition_to(StateDefinition::State2);} }
+            void state1_on_exit() { std::cout << "State1 on exit" << std::endl; }
+
+            void state2_on_do() { std::cout << "State2 on do" << std::endl; }
+            void state2_on_enter() { std::cout << "State2 on enter" << std::endl; }
+            void state2_on_exit() { std::cout << "State2 on exit" << std::endl; }
+
+            Fsm fsm:
+
+            void register_states()
+            {
+                fsm.register_state(StateDefinition::State1, 
+                    [this](){state1_on_do(); fsm.transition_to(StateDefinition::State2);},
+                    [this](){state1_on_enter();},
+                    [this](){state1_on_exit();}
+                );
+
+                fsm.register_state(StateDefinition::State2, 
+                    [this](){state2_on_do();},
+                    [this](){state2_on_enter();},
+                    [this](){state2_on_exit();}
+                );
+
+                fsm.set_initial_state(StateDefinition::State1);
+            }
+        };
+
+        class StateHandlerWithOverride : public StateHandler
+        {
+        public:
+
+            StateHandlerWithOverride() : StateHandler() { register_my_states(); }
+
+        protected:
+
+            enum struct MyStateDefinition
+            {
+                NewState
+            };
+
+            void register_my_states() 
+            {
+            
+                fsm.register_state(MyStateDefinition::NewState, 
+                    [this](){std::cout << "New state on do" << std::endl;},
+                    [this](){std::cout << "New state on enter" << std::endl; fsm.transition_to(StateDefinition::State2);},
+                    [this](){std::cout << "New state on exit" << std::endl;}
+                );
+
+                fsm.registerTransitionOverride(StateDefinition::State1, StateDefinition::State2, MyStateDefinition::NewState);
+            }
+        };
+
+    State Handler override
+    ^^^^^^^^^^^^^^^^^^^^^^
+
+    It is also possible to override the state handler of a specific state. This is done by registering a new state handler with an existing state ID.
+    In the case of state handler override, the Fsm gives the ability to retrieve the actual State handler registered to the State ID to have access
+    to its entry, do and exit functions, in the case the new state handler wants to call them.
+
+*/
+
 // Detect compiler and define a macro for getting function signature
 #if defined(_MSC_VER)  // Microsoft compiler
     #define FUNCTION_SIGNATURE __FUNCSIG__
