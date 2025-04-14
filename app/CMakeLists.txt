@@ -1,31 +1,18 @@
 
 
+cmake_minimum_required(VERSION 3.14)
 
+project(dartnetfw VERSION 1.0 LANGUAGES CXX)
 
-find_package(Doxygen)  
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+add_executable(app src/main.cpp)
 
+target_include_directories(app PUBLIC include)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/doc/doxygen/Doxyfile.in
-               ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+add_library(app_headers_only INTERFACE)
+target_include_directories(app_headers_only INTERFACE include)
 
-
-doxygen_add_docs( dnfw-doxygen 
-  CONFIG_FILE ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
-  COMMENT "Generating API documentation with Doxygen"
-)
-
-
-find_package(Sphinx REQUIRED)
-
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/doc/sphinx/conf.py.in
-               ${CMAKE_CURRENT_BINARY_DIR}/conf.py @ONLY)
-
-sphinx_add_docs(sphinx-doc-html
-  BUILDER html
-  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}
-  CONFIG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/sphinx
-  OUTPUT_DIR sphinx-html
-  VERBOSE
-)
- 
+add_subdirectory(tests/ut)
+#add_subdirectory(tests/sit)

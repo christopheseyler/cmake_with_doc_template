@@ -7,7 +7,7 @@ Software Components (SWC) Requirements
    :caption: Contents:
    
 
-   ../../../include/MyModule/MyModule.srs
+   ../../../app/include/utils/Fsm/Fsm.srs
    
 
 

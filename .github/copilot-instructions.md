@@ -126,3 +126,107 @@ When a test case uses a test vector, the documention of the test shall include a
     ======================= =============================== ==========================
 
 
+
+
+## Software Components
+
+### Description
+
+A software component is defined either by:
+- a class (header file and optionnaly a cpp file) for C++ project
+- a couple of C and header file for C project
+- a component specification file (component_name.srs.rst) 
+- a component detail design file (component_name.sdd.rst)
+
+#### Template
+
+In the following template:
+- <xxxx> indicates a placeholder that needs to be replaced
+- $$ yyyyy $$ indicates a note to explain something in the document (definition of a section content...) 
+
+#### Structure of the component specification file
+
+The RST file is basically a requirements file that contains the requirements of the component. To write the requirements, the document uses
+sphinx-needs extension. It is divided into sections that are defined by the following template:
+
+$$ SRS file template starts here $$
+
+Component Name
+##############
+
+Purpose
+-------
+
+<Description of the component extracted from the class description in C++ project or from a general comment in the header file for C project>
+
+Requirements
+------------
+
+$$ The requirements list uses this format $$
+
+.. list2need:: 
+    :types: srs
+    :tags: <project>, swc, <software component name>
+    :list-options:
+        :hide:
+    
+    * (<requirement id with the form of SRS-<module acronym in upper case>-<number with 5 digits, incremented by 10>>) <Requirement title>. 
+    <the requirement text using EARS syntax>
+    * ... the next requirement ...
+
+
+ .. needtable::
+    :filter: type == 'sss' and <project> in tags and 'swc' in tags and <software component name> in tags
+    :style: table
+    :columns: id;title as "Label";content as "Description"; outgoing as "Uplink(s)"; 
+    :colwidths: 10,12,64,10
+
+
+$$ SRS file template ends here $$
+
+
+#### Structure of the component detail design file
+
+The RST file is a design file that provides implementation details of the component. It is divided into sections that are defined by the following template:
+
+
+$$ SDD file template starts here $$
+
+Component Name
+##############
+
+Purpose
+-------
+
+<Description of the component extracted from the class description in C++ project or from a general comment in the header file for C project>
+
+Requirements
+------------
+
+$$ Remainder of the requirements that drive the project $$
+
+.. needtable::
+    :filter: type == 'sss' and <project> in tags and 'swc' in tags and <software component name> in tags
+    :style: table
+    :columns: id;title as "Label";content as "Description"; outgoing as "Uplink(s)"; 
+    :colwidths: 10,12,64,10
+
+Implementation Details
+----------------------
+
+$$ For C++ project, create a plantuml diagram of the class $$
+$$ For C project, create a plantuml diagram of the component $$
+
+
+Tests Suite
+-----------
+
+$$ This section provides the list of tests that are related to the component. It also uses the sphinx-needs extension $$ 
+
+.. needtable::
+    :filter: type == 'unittest and <project> in tags and 'swc' in tags and <software component name> in tags
+    :style: table
+    :columns: id;title as "Description"; checks as "Validates"
+    :colwidths: 10,80,10
+
+$$ SDD file template ends here $$

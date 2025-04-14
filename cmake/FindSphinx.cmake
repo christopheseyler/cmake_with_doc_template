@@ -17,6 +17,9 @@ function(sphinx_add_docs _target)
 
   unset(SPHINX_BREATHE_PROJECTS)
 
+  
+
+
   if(NOT _args_BUILDER)
     message(FATAL_ERROR "Sphinx builder (BUILDER) not specified for target ${_target} (html, pdf or epub)")
   elseif(NOT _args_SOURCE_DIR)
@@ -55,6 +58,8 @@ function(sphinx_add_docs _target)
   if (_args_ROOT_DOC)
     set(_root_doc "${_args_ROOT_DOC}")
   endif()
+
+  
 
 #  if(_args_BREATHE_PROJECTS)
 #    if(NOT Sphinx_breathe_FOUND)
@@ -111,6 +116,21 @@ function(sphinx_add_docs _target)
 #  endif()
 
   set(_cachedir "${CMAKE_CURRENT_BINARY_DIR}/${_target}.cache")
+
+
+  message(STATUS "Configuring Sphinx documentation for target '${_target}'")
+  message(STATUS "  Builder: ${_builder}")
+  message(STATUS "  Source directory: ${_sourcedir}")
+  message(STATUS "  Config directory: ${_configdir}")
+  message(STATUS "  Output directory: ${_outputdir}")
+  message(STATUS "  Cache directory: ${_cachedir}")
+  if(_args_VERBOSE)
+    message(STATUS "  Verbose mode enabled")
+  endif()
+  if(_args_ROOT_DOC)
+    message(STATUS "  Root document: ${_root_doc}")
+  endif()
+
   file(MAKE_DIRECTORY "${_cachedir}")
   if(EXISTS "${_configdir}/_static")
     file(COPY "${_configdir}/_static" DESTINATION "${_cachedir}")
@@ -123,7 +143,12 @@ function(sphinx_add_docs _target)
     file(MAKE_DIRECTORY "${_cachedir}/_templates")
   endif()
 
+ 
+
   if(EXISTS "${_configdir}/conf.py.in")
+
+    message(STATUS "Copying configuration file from '${_configdir}/conf.py.in' to '${_cachedir}/conf.py'")
+
     configure_file("${_configdir}/conf.py.in" "${_cachedir}/conf.py" @ONLY)
  # else()
  #   _Sphinx_generate_confpy(${_target} "${_cachedir}")

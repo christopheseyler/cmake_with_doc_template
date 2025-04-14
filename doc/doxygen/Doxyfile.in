@@ -293,10 +293,10 @@ TAB_SIZE               = 4
 ALIASES = "rst=^^\verbatim embed:rst^^"
 ALIASES += "endrst=\endverbatim"
 
-ALIASES += "ut{1}=^^\verbatim embed:rst^^^^.. test:: \1^^   :id: \1 "
-ALIASES += "utdef{2|}=^^\verbatim embed:rst^^^^.. test:: \2^^   :id: \1 "
+ALIASES += "ut{1}=^^\verbatim embed:rst^^^^.. unittest:: \1^^   :id: \1 "
+ALIASES += "utdef{2|}=^^\verbatim embed:rst^^^^.. unittest:: \2^^   :id: \1 "
 ALIASES += "endut=\endverbatim"
-ALIASES += "sitdef{2|}=^^\verbatim embed:rst^^^^.. test:: \2^^   :id: \1 "
+ALIASES += "sitdef{2|}=^^\verbatim embed:rst^^^^.. unittest:: \2^^   :id: \1 "
 ALIASES += "endsit=\endverbatim"
 ALIASES += "tags{1|}=    :tags: \1^^"
 ALIASES += "links{1|}=    :links: \1^^"
@@ -978,7 +978,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = "@PROJECT_SOURCE_DIR@/libs/dartnetfw/include/dartnetfw" "@PROJECT_SOURCE_DIR@/libs/dartnetfw/tests/ut" "@PROJECT_SOURCE_DIR@/libs/dartnetfw/tests/sit"
+INPUT                  = "@PROJECT_SOURCE_DIR@/app/include" "@PROJECT_SOURCE_DIR@/app/tests/ut" "@PROJECT_SOURCE_DIR@/app/tests/sit"
 
 # This tag can be used to specify the character encoding of the source files
 # that Doxygen parses. Internally Doxygen uses the UTF-8 encoding. Doxygen uses

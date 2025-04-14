@@ -96,13 +96,10 @@ doxygen_add_docs( dnfw-doxygen
 
 find_package(Sphinx REQUIRED)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/sphinx/conf.py.in
-               ${CMAKE_CURRENT_BINARY_DIR}/conf.py @ONLY)
-
 sphinx_add_docs(sphinx-doc-html
   BUILDER html
-  SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src/
-  CONFIG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/sphinx
+  SOURCE_DIR ${PROJECT_SOURCE_DIR}
+  CONFIG_DIR ${PROJECT_SOURCE_DIR}/doc/sphinx
   OUTPUT_DIR sphinx-html
   VERBOSE
 )

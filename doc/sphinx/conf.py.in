@@ -20,7 +20,7 @@ plantuml = 'java -jar @CMAKE_SOURCE_DIR@/tools/plantuml.jar'
 
 root_doc ='doc/src/index'
 
-include_patterns = ['include/**/*.srs.rst', 'include/**/*.sdd.rst', 'doc/**/*', 'doc/src/index.rst']
+include_patterns = ['app/include/**/*.srs.rst', 'app/include/**/*.sdd.rst', 'doc/**/*', 'doc/src/index.rst']
 
  
 # ----- HTML Build Customization ------------------------------------------------------------------

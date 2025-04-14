@@ -19,6 +19,9 @@ if(BUILD_TESTS)
     FetchTestFramework()
 endif() 
 
+
+
+add_subdirectory(doc)
 add_subdirectory(app)
 
 
