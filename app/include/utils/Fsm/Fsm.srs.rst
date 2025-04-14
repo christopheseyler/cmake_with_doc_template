@@ -18,7 +18,7 @@ Requirements
 
 .. list2need::
     :types: req
-    :tags: dnfw, srs, swc, fsm
+    :tags: app, srs, swc, fsm
     :list-options:
         :hide:    
 
@@ -39,7 +39,7 @@ Requirements
     * (DNFW-SRS-FSM-0130) FSM state override. The fsm shall allow to override a state by another. ((links="DNFW-SSS-GAMEFSM-00110")) 
     
 .. needtable::
-    :filter: 'dnfw' in tags and 'srs' in tags and 'swc' in tags and 'fsm' in tags
+    :filter: 'app' in tags and 'srs' in tags and 'swc' in tags and 'fsm' in tags
     :style: table
     :columns: id;title as "Label";content as "Description"; outgoing as "Uplink(s)"; incoming as "Implemented by"
     :colwidths: 10,8,62,10,10

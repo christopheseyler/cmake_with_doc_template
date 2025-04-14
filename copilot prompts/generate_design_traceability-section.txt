@@ -1,0 +1,18 @@
+For the Fsm Module, you could add a section in its SDD file, below the "Implementation Details section" called "Design traceability" where :
+
+For each function/method od the module public API, you create an 'implementation entry' following the form of: 
+
+.. impl:: <module name>::<name of the function / method>
+   :id: <module name>::<name of the function / method>
+   :layout: impllayout
+   :tags: <project name>,  swc, <module name>
+   :implements: <link to requirement defined below>
+   :is validated by: <link to the test case defined below>
+   
+   .. code:: cpp
+		<signature of the function/method>
+		
+   <Description of the function/method extracted from comment including the description of the parameters and the returned value>
+
+To find the link to the requirement, use the unit test associated to this module when the function/method is taken in an ASSERT and/or EXPECT. If found, take the reference to the SRS lin in the unit description (in the :check: field) 
+To find the link to the test case, use the test id associate to the unit test associated to this module when the function/method is taken in an ASSERT and/or EXPECT. 

@@ -217,6 +217,28 @@ Implementation Details
 $$ For C++ project, create a plantuml diagram of the class $$
 $$ For C project, create a plantuml diagram of the component $$
 
+Design Traceability
+-------------------
+
+This section provides the traceability between the requirements and the implementation. 
+
+$$ For each function/method od the module public API, you create an 'implementation entry' following the form of: $$
+
+.. impl:: <module name>::<name of the function / method>
+   :id: <module name>::<name of the function / method>
+   :layout: impllayout
+   :tags: <project name>,  swc, <module name>
+   :implements: <link to requirement defined below>
+   :is validated by: <link to the test case defined below>
+   
+   .. code:: cpp
+		<signature of the function/method>
+		
+   <Description of the function/method extracted from comment>
+
+$$ To find the link to the requirement, use the unit test associated to this module when the function/method is taken in an ASSERT and/or EXPECT. If found, take the reference to the SRS lin in the unit description (in the :check: field) $$
+
+$$ To find the link to the test case, use the test id associate to the unit test associated to this module when the function/method is taken in an ASSERT and/or EXPECT. $$
 
 Tests Suite
 -----------

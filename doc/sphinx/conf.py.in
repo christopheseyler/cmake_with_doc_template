@@ -85,6 +85,13 @@ needs_layouts = {
             'head' : ['Test : <<meta_id()>> : **<<meta("title")>>** <<collapse_button("meta", collapsed="icon:arrow-down-circle", visible="icon:arrow-right-circle", initial=True)>>'],
             'meta' : ['**Test Purpose**\n <<meta("purpose")>>, <<meta("setup", "Test Setup : ", True)>>,<<meta("teardown", "Test Teardown : ", True)>>']
         }
+    },
+    'impllayout': {
+        'grid': 'simple',
+        'layout': {
+            'head' : ['Design Artifact : <<meta_id()>> <<collapse_button("meta", collapsed="icon:arrow-down-circle", visible="icon:arrow-right-circle", initial=True)>>'],
+            'meta' : [ 'Implements : <<meta_links("implements")>>']
+        }
     }
 }
 
@@ -105,6 +112,8 @@ needs_extra_links = [
       "incoming": "is implemented by",
       "outgoing": "implements",
    },
+
+   
    {
       "option": "triggers",
       "incoming": "is triggered by",
