@@ -1,0 +1,44 @@
+$$SWC
+===
+
+Purpose
+-------
+
+.. impl:: $$class_name
+   :id: SWC-$$SWC
+   :tags: dnfw, sdd, fsm
+   :implements: 
+
+    $$Purpose of the SWC
+
+Usage
+-----
+
+Requirements
+------------
+
+.. needtable::
+    :filter: 'dnfw' in tags and type=='srs'  and 'fsm' in tags
+    :style: table
+    :columns: id;title as "Label";content as "Description"; outgoing as "Uplink(s)";  is checked by
+    :colwidths: 10,8,64,10,8
+
+
+Implementation details
+----------------------
+
+Component Interface
+-------------------
+
+.. doxygenclass:: $$class_name
+    :project: dnfw
+    :members:
+
+Unit Tests
+----------
+
+.. needtable::
+    :filter: 'dnfw' in tags and 'ut' in tags and '$$swc' in tags
+    :style: table
+    :columns: id;title as "Description"; checks as "Validates"
+    :colwidths: 10,80,10

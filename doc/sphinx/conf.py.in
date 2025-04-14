@@ -1,0 +1,124 @@
+project = "Ultimate Darts Game Next-Gen"
+author = "Christophe SEYLER"
+copyright = "2024, Deltatec"
+version = "@PROJECT_VERSION@"
+release = "@PROJECT_VERSION@"
+
+# ----- Sphinx configuration  ---------------------------------------------------------------------
+# extension
+# * myst-parser : markdown support 
+
+extensions = [ "myst_parser", "sphinxcontrib.plantuml", "sphinx_needs","breathe", 'sphinx_simplepdf']
+
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.txt': 'markdown',
+    '.md': 'markdown',
+}
+
+plantuml = 'java -jar @CMAKE_SOURCE_DIR@/tools/plantuml.jar' 
+
+root_doc ='doc/src/index'
+
+include_patterns = ['include/**/*.srs.rst', 'include/**/*.sdd.rst', 'doc/**/*', 'doc/src/index.rst']
+
+ 
+# ----- HTML Build Customization ------------------------------------------------------------------
+
+html_theme = 'sphinx_rtd_theme'
+html_static_path = ['_static']
+html_css_files = [
+    'css/rtd_custom.css',
+#'css/simplepdf_custom.css',
+]
+
+
+
+simplepdf_use_weasyprint_api = True
+
+simplepdf_debug = True
+
+simplepdf_vars = {
+    'primary': '#FA2323',
+    'secondary': '#379683',
+    'cover': '#ffffff',
+    'white': '#ffffff',
+    'links': 'FA2323',
+    'cover-bg': 'url(cover-bg.jpg) no-repeat center',
+    'cover-overlay': 'rgba(250, 35, 35, 0.5)',
+    'top-left-content': 'counter(page)',
+    'bottom-center-content': '"Custom footer content"',
+}
+
+
+# ----- Sphinx-needs configuration ----------------------------------------------------------------
+# This section lists the configuration items related to the "sphinx_needs" extension
+
+needs_id_regex = '(.*)' 
+needs_id_length = 30
+needs_build_json = True 
+
+needs_types = [dict(directive="req", title="Requirement", prefix="R_", color="#BFD8D2", style="node"),
+               dict(directive="sss", title="System Requirement", prefix="R_", color="#BFD8D2", style="node"),
+               dict(directive="srs", title="Requirement", prefix="R_", color="#BFD8D2", style="node"),
+               dict(directive="spec", title="Specification", prefix="S_", color="#FEDCD2", style="node"),
+               dict(directive="impl", title="Implementation", prefix="I_", color="#DF744A", style="node"),
+               dict(directive="test", title="Test Case", prefix="TEST_", color="#DCB239", style="node"),
+               dict(directive="unittest", title="Unit Test Case", prefix="UT_", color="#DCB239", style="node"),
+               # Kept for backwards compatibility
+               dict(directive="need", title="Need", prefix="N_", color="#9856a5", style="node")
+           ]
+
+needs_extra_options = ['val_method', 'no_validation', 'no_uplink', 'purpose', 'setup', 'teardown', 'deleted']
+
+needs_layouts = {
+    'reqlayout': {
+        'grid': 'simple',
+        'layout': {
+            'head' : ['Requirement : <<meta_id()>> : **<<meta("title")>>** <<collapse_button("meta", collapsed="icon:arrow-down-circle", visible="icon:arrow-right-circle", initial=True)>>'],
+            'meta' : ['<<meta("validation", "Validation Method : ", True)>><<meta("no_validation")>>', 'Uplinks : <<meta_links("links")>><<meta("no_uplink", " - ")>>', 'Covered : <<meta_links("links", incoming=True)>>']
+        }
+    },
+    'testlayout': {
+        'grid': 'simple',
+        'layout': {
+            'head' : ['Test : <<meta_id()>> : **<<meta("title")>>** <<collapse_button("meta", collapsed="icon:arrow-down-circle", visible="icon:arrow-right-circle", initial=True)>>'],
+            'meta' : ['**Test Purpose**\n <<meta("purpose")>>, <<meta("setup", "Test Setup : ", True)>>,<<meta("teardown", "Test Teardown : ", True)>>']
+        }
+    }
+}
+
+
+
+#'meta' : ['<<meta("validation", "Validation Method : ")>>','<<meta("no_validation", "No Validation Method Justification : ")>>', 'Uplinks : <<meta_links("links")>><<meta("no_uplink", " - ")>>']
+
+needs_default_layout = 'reqlayout'
+
+needs_extra_links = [
+   {
+      "option": "checks",
+      "incoming": "is checked by",
+      "outgoing": "checks",
+   },
+   {
+      "option": "implements",
+      "incoming": "is implemented by",
+      "outgoing": "implements",
+   },
+   {
+      "option": "triggers",
+      "incoming": "is triggered by",
+      "outgoing": "triggers",
+      "copy": False,
+      "allow_dead_links": True,
+      "style": "#00AA00",
+      "style_part": "#00AA00",
+      "style_start": "-",
+      "style_end": "--o",
+   }
+]
+
+# ---- Breathe Configuration --------------------------------------------------------------------------------------------
+
+breathe_projects = {"dnfw": "@CMAKE_CURRENT_BINARY_DIR@/doxygen/xml"}
+breathe_default_project = "dnfw"

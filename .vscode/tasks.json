@@ -1,0 +1,64 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Open Sphinx Doc Output in default browser",
+      "type": "shell",
+      "command": "start",
+      "args": [
+        "build/doc/sphinx-html/index.html"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run Lizard Excluding Tests",
+      "type": "shell",
+      "command": "lizard",
+      "args": [
+        "--exclude",
+        "d:\\github\\udgnextgen\\libs\\dartnetfw\\tests\\*",
+        "d:\\github\\udgnextgen\\libs\\dartnetfw"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    
+    {
+      "label": "Run Lizard with Detailed Metrics",
+      "type": "shell",
+      "command": "lizard",
+      "args": [
+        "--exclude",
+        "d:\\github\\udgnextgen\\libs\\dartnetfw\\tests\\*",
+        "--CCN=10",
+        "--length=100",
+        "--arguments=5",
+        "--html",
+        "d:\\github\\udgnextgen\\libs\\dartnetfw",
+        ">",
+        "${workspaceFolder}/tools/lizard_report.html"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "View Lizard Report",
+      "type": "shell",
+      "command": "start",
+      "args": [
+        "${workspaceFolder}/tools/lizard_report.html"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    }
+    
+  ]
+}
+

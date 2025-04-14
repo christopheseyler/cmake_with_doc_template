@@ -1,0 +1,13 @@
+.wy-nav-content {
+    max-width: none;
+}
+
+
+.wy-table-responsive table td, .wy-table-responsive table th {
+    white-space: normal;
+    overflow-x: auto;
+}
+
+.docutils caption {
+    caption-side: bottom;
+  }
