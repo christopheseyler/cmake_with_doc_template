@@ -7,7 +7,7 @@ For each function/method od the module public API, you create an 'implementation
    :layout: impllayout
    :tags: <project name>,  swc, <module name>
    :implements: <link to requirement defined below>
-   :is validated by: <link to the test case defined below>
+   :is_checked_by: <link to the test case defined below>
    
    .. code:: cpp
 		<signature of the function/method>

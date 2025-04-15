@@ -116,7 +116,7 @@ The Test_ID has the form of UT-MODULE-0010 with the number incremented 10 by 10
 
 ### Test cases documentation when the test uses a test vector
 
-When a test case uses a test vector, the documention of the test shall include a summary table of the vector in RST format like :
+When a test case uses a test vector, the documentation of the test shall include a summary table of the vector in RST format like :
 
     ======================= =============================== ==========================
      Dart Hit Event Type     Details                         Expected Behavior
@@ -124,8 +124,6 @@ When a test case uses a test vector, the documention of the test shall include a
      MissedDartHitEvent      A missed dart                   nb_missed_darts + 1
      DartHitEvent            Double, Outer, Value 1          nb_missed_darts unchanged
     ======================= =============================== ==========================
-
-
 
 
 ## Software Components
@@ -229,12 +227,15 @@ $$ For each function/method od the module public API, you create an 'implementat
    :layout: impllayout
    :tags: <project name>,  swc, <module name>
    :implements: <link to requirement defined below>
-   :is validated by: <link to the test case defined below>
+   :is_checked_by: <link to the test case defined below>
    
    .. code:: cpp
 		<signature of the function/method>
 		
    <Description of the function/method extracted from comment>
+   
+   <Description of the parameters, return value, exceptions, ... extracted from comment>
+
 
 $$ To find the link to the requirement, use the unit test associated to this module when the function/method is taken in an ASSERT and/or EXPECT. If found, take the reference to the SRS lin in the unit description (in the :check: field) $$
 
@@ -252,3 +253,11 @@ $$ This section provides the list of tests that are related to the component. It
     :colwidths: 10,80,10
 
 $$ SDD file template ends here $$
+
+
+
+## Documentation template and generation
+
+### Software Unit Test and Integration Test documentation (SUITP)
+
+This document uses breathe to extract documentation 

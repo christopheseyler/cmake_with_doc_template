@@ -5,9 +5,10 @@ Purpose
 -------
 
 This component implements a Finite State Machine (FSM) that allows to register a set of states by defining function pointers to their:
-- entry function
-- do function
-- exit function
+
+ - entry function
+ - do function
+ - exit function
 
 After specifying the initial state, the FSM can be started and updated until the FSM goes in an *exit* state. During the update, the FSM calls the *on do* function of the current state.
 The FSM provides a way to initiate a transition to another state. This will call the *on exit* function of the current state and the *on enter* function of the new state.
@@ -43,17 +44,12 @@ The FSM implementation follows the classic Finite State Machine pattern with som
      
     
     package fsm {
-       
-       
-    
+      
      class Fsm {
-       
-       
        - current_state_handler: std::shared_ptr<Fsm::State>
        - m_current_state_id: StateId
        - state_handlers_list: std::unordered_map<StateId, std::shared_ptr<Fsm::State>>
        - transitions_override_list: std::unordered_map<std::pair<StateId, StateId>, StateId>
-       
        
        + Fsm()
        + ~Fsm()
@@ -381,7 +377,7 @@ Design Traceability
    :id: Fsm::find_state
    :tags: app, swc, fsm
    :layout: impllayout
-   :implements: DNFW-SRS-FSM-0130
+   :implements: DNFW-SRS-FSM-0130, DNFW-SRS-FSM-0010
    
    .. code:: cpp
    

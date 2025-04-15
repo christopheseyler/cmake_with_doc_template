@@ -10,8 +10,6 @@ enum struct StateDefinition
     State2
 };
 
-
-
 /** @utdef{UT-FSM-0010 | Starting an empty fsm must throw an exception}
     :layout: test
     :tags: app, swc, fsm
@@ -49,7 +47,7 @@ TEST(fsm, starting_fsm_with_no_initial_state_throw_exception)
 /** @utdef{UT-FSM-0030 | Starting an fsm with an initial state must not throw an exception}
     :layout: test
     :tags: app, swc, fsm
-    :checks: DNFW-SRS-FSM-0050, DNFW-SRS-FSM-0060
+    :checks: DNFW-SRS-FSM-0050, DNFW-SRS-FSM-0060, DNFW-SRS-FSM-0041
     
     - GIVEN an fsm with a registered and specified initial state
     - WHEN the fsm is started
@@ -79,7 +77,7 @@ public:
 /** @utdef{UT-FSM-0040 | Starting an fsm with an initial state must call the enter function of the initial state}
     :layout: test
     :tags: app, swc, fsm
-    :checks: DNFW-SRS-FSM-0060, DNFW-SRS-FSM-0070
+    :checks: DNFW-SRS-FSM-0060, DNFW-SRS-FSM-0070, DNFW-SRS-FSM-0020
 
     - GIVEN an fsm with a registered and specified initial state
     - WHEN the fsm is started
@@ -110,7 +108,7 @@ TEST(fsm, starting_fsm_with_initial_state_with_enter_calls_the_enter_function)
 /** @utdef{UT-FSM-0050 | Updating a fsm must call the do and function of the current state}
     :layout: test
     :tags: app, swc, fsm
-    :checks: DNFW-SRS-FSM-0090
+    :checks: DNFW-SRS-FSM-0090, DNFW-SRS-FSM-0030
 
     - GIVEN an fsm with a registered state that defines a do function
     - WHEN the fsm is started and updated
@@ -141,7 +139,7 @@ TEST(fsm, calling_update_calls_do)
 /** @utdef{UT-FSM-0060 | Transitioning to another state must call the exit function of the current state and the enter function of the next state}
     :layout: test
     :tags: app, swc, fsm
-    :checks: DNFW-SRS-FSM-0090
+    :checks: DNFW-SRS-FSM-0110, DNFW-SRS-FSM-0111, DNFW-SRS-FSM-0040
 
     - GIVEN an fsm with a registered state1 and state2, and a current state set to state1
     - WHEN a transition to state2 is requested
@@ -185,7 +183,7 @@ TEST(fsm, transition_to_state2_calls_state1_exit_and_state2_enter_and_state2_do_
 /** @utdef{UT-FSM-0070 | Update must return false to notify the end of the fsm}
     :layout: test
     :tags: app, swc, fsm
-    :checks: DNFW-SRS-FSM-0090
+    :checks: DNFW-SRS-FSM-0100
 
     - GIVEN an fsm in exited state
     - WHEN an update() is called
@@ -220,7 +218,7 @@ TEST(fsm, update_must_return_false_when_fsm_is_exited)
 /** @utdef{UT-FSM-0080 | Attemps to start an ended fsm must throw an exception}
     :layout: test
     :tags: app, swc, fsm
-    :checks: DNFW-SRS-FSM-0090
+    :checks: DNFW-SRS-FSM-0080
 
     - GIVEN an fsm in exited state
     - WHEN the fsm is started
@@ -258,7 +256,7 @@ TEST(fsm, starting_an_exited_fsm_throw_exception)
 /** @utdef{UT-FSM-0090 | When a transition is overriden, the fsm must call the enter and do functions of the inserted state}
     :layout: test
     :tags: app, swc, fsm
-    :checks: DNFW-SRS-FSM-0090
+    :checks: DNFW-SRS-FSM-0120
 
     - GIVEN an fsm with a registered state1, state2 and a custom state, and a current state set to state1
     - WHEN the transition from state1 to state2 is overriden by the custom state
@@ -338,7 +336,7 @@ TEST(fsm, transition_override)
 /** @utdef{UT-FSM-0100 | Finding a registered state must return the state}
     :layout: test
     :tags: app, swc, fsm
-    :checks: DNFW-SRS-FSM-0090
+    :checks: DNFW-SRS-FSM-0010
 
     - GIVEN an fsm with a registered state
     - WHEN the find_state function is called with the registered state ID
@@ -365,7 +363,7 @@ TEST(fsm, find_state_with_registered_state)
 /** @utdef{UT-FSM-0110 | Finding an unregistered state must return no state}
     :layout: test
     :tags: app, swc, fsm
-    :checks: DNFW-SRS-FSM-0090
+    :checks: DNFW-SRS-FSM-0010
 
     - GIVEN an fsm with a registered state
     - WHEN the find_state function is called with an unregistered state ID
@@ -392,7 +390,7 @@ TEST(fsm, find_state_with_unregistered_state)
 /** @utdef{UT-FSM-0120 | Restarting the fsm with a new initial state set must call the enter function of this new initial state}
     :layout: test
     :tags: app, swc, fsm
-    :checks: DNFW-SRS-FSM-0090
+    :checks: DNFW-SRS-FSM-0050, DNFW-SRS-FSM-0070
 
     - GIVEN an fsm with a registered state1 and state2, and a current state set to state1
     -   AND the fsm is started and updated until the exit of state2

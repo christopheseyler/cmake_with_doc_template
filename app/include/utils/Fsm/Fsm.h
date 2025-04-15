@@ -270,9 +270,10 @@ namespace std {
    {
    
     /**  This component implements a Finite State Machine (FSM) that allows to register a set of states by defining function pointers to their :
-         - entry function
-         - do function
-         - exit function
+      
+           - entry function
+           - do function
+           - exit function
 
         After specifying the initial state, the FSM can be started and updated until the FSM goes in an *exit* state. During the update, the FSM calls the *on do* function of the current state.
         The FSM provides a way to initiate a transition to another state. This will call the *on exit* function of the current state and the *on enter* function of the new state.

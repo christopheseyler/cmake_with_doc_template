@@ -1,0 +1,4 @@
+with claude 3.7
+
+in my tests description, i indicate which requirement is checked by the test (with :check:). 
+Could you check the coherency between the test description and the description of the pointed requirements ?
