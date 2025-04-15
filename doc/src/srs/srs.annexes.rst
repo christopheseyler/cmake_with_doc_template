@@ -1,8 +1,7 @@
 Annexes
 =======
 
-
 .. toctree::
-   :hidden:
-      
+   :maxdepth: 1
+
    srs.ears
