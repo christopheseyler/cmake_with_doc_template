@@ -3,10 +3,10 @@ Unit Test Suites
 
 This sections describes the unit test suites sorted by software component.
 
-Unit Test Suites for Fsm 
-=========================
+Unit Test Suites for Frame Receiver 
+===================================
 
-.. doxygenfile:: tests/ut/ut_core_utils_fsm.cpp
+.. doxygenfile:: tests/ut/ut-frame_receiver.c
     :sections: func
     :project: app
 

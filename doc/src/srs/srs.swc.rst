@@ -7,7 +7,7 @@ Software Components (SWC) Requirements
    :caption: Contents:
    
 
-   ../../../app/include/utils/Fsm/Fsm.srs
+   ../../../app/src/frame_receiver/frame_receiver.srs
    
 
 

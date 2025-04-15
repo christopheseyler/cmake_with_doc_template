@@ -1,0 +1,3 @@
+claude 3.7
+
+this is an old formalism to define requirements in MD file, could you update it to our new RST formalism ?
