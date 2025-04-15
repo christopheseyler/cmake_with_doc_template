@@ -104,6 +104,7 @@ Design Traceability
    :id: frame_receiver_is_frame_available
    :layout: impllayout
    :tags: dlt, swc, frame_receiver
+   :implements: DLT-SRS-FRAME-RECEIVER-FUN-010
    
    .. code:: c
    
@@ -121,6 +122,7 @@ Design Traceability
    :id: frame_receiver_copy_frame
    :layout: impllayout
    :tags: dlt, swc, frame_receiver
+   :implements: DLT-SRS-FRAME-RECEIVER-FUN-020
    
    .. code:: c
    
@@ -154,6 +156,7 @@ Design Traceability
    :id: frame_receiver_get_uart_id
    :layout: impllayout
    :tags: dlt, swc, frame_receiver
+   :implements: DLT-SRS-FRAME-RECEIVER-FUN-040
    
    .. code:: c
    
