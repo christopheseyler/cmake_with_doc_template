@@ -107,6 +107,12 @@ needs_extra_links = [
       "incoming": "is_checked_by",
       "outgoing": "checks",
    },
+
+   {
+      "option": "checks_impl",
+      "incoming": "impl_is_checked_by",
+      "outgoing": "checks_impl",
+   },
    {
       "option": "implements",
       "incoming": "is_implemented_by",

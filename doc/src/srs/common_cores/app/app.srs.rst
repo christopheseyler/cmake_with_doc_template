@@ -61,7 +61,7 @@ Framework for top-level application handling
 
 
 .. needtable::
-    :filter: type == 'srs' and 'dlt' in tags and 'app' in tags and app in tags
+    :filter: type == 'srs' and 'dlt' in tags and 'app' in tags
     :style: table
     :columns: id;title as "Label";content as "Description"; outgoing as "Uplink(s)"
     :colwidths: 10,12,64,10

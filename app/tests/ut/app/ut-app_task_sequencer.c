@@ -9,6 +9,7 @@
     :layout: test
     :tags: su, app_task_sequencer
     :checks: DLT-SRS-APP-TASK-SEQUENCER-ITF-001, DLT-SRS-APP-TASK-SEQUENCER-ITF-002
+    :checks_impl: app_task_sequencer_register, app_task_sequencer_init
 
     - GIVEN a set of initializers registered with app_task_sequencer_register
     - WHEN app_task_sequencer_init is called
@@ -31,6 +32,7 @@ TEST(register_and_init_initializer)
     :layout: test
     :tags: su, app_task_sequencer
     :checks: DLT-SRS-APP-TASK-SEQUENCER-ITF-001, DLT-SRS-APP-TASK-SEQUENCER-ITF-003
+    :checks_impl: app_task_sequencer_register, app_task_sequencer_update
 
     - GIVEN a set of updaters registered with app_task_sequencer_register
     - WHEN app_task_sequencer_update is called

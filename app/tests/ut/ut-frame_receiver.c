@@ -1,5 +1,3 @@
-
-
 #include "com.regmap.h"
 #include "dpc_hal/checksum/checksum.h"
 #include "dpc_hal/mb/mb.h"
@@ -198,6 +196,7 @@ static void set_instance_state(FrameReceiverInstanceIndex instance_index, Framer
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-001
+    :checks_impl: frame_receiver_init
 
     - GIVEN a frame receiver component
     - WHEN frame_receiver_init is called with valid parameters
@@ -223,6 +222,7 @@ TEST(provides_initialization_function)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-002
+    :checks_impl: frame_receiver_init
 
     - GIVEN a frame receiver instance and a buffer with a specific size
     - WHEN frame_receiver_init is called 
@@ -254,6 +254,7 @@ TEST(provides_initialize_circular_buffer)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-003
+    :checks_impl: frame_receiver_init
 
     - GIVEN a frame receiver instance and a buffer with a specific size
     - WHEN frame_receiver_init is called
@@ -285,6 +286,7 @@ TEST(provides_initialize_configure_uart_circular_buffer)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-004
+    :checks_impl: frame_receiver_init
 
     - GIVEN a frame receiver instance
     - WHEN frame_receiver_init is called
@@ -320,6 +322,7 @@ TEST(provides_configure_uart_lines)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-001
+    :checks_impl: frame_receiver_init
 
     - GIVEN a frame receiver instance
     - WHEN frame_receiver_init is called
@@ -355,6 +358,7 @@ TEST(initialization_function_set_waiting_sof_state)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver component
     - WHEN frame_receiver_update is called with a valid instance
@@ -374,6 +378,7 @@ TEST(provides_update_function)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance initialized
     - WHEN the frame_receiver_update function is called
@@ -407,6 +412,7 @@ TEST(reads_1bytes_instance_rx_buffer, setup_frame_receiver_init)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance in waiting_sof state
     - WHEN a byte that is not the SoF is read
@@ -430,6 +436,7 @@ TEST(waiting_sof_reads_discard_byte, setup_frame_receiver_init)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance in waiting_sof state
     - WHEN the SOF byte (0x5A) is read
@@ -451,6 +458,7 @@ TEST(waiting_sof_reads_switch_state_when_meeting_sof, setup_frame_receiver_init)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance in waiting_sof state
     - WHEN the SOF byte is received
@@ -472,6 +480,7 @@ TEST(switch_to_waiting_header_reads_set_red_idx_to_1, setup_frame_receiver_init)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance in waiting_sof state
     - WHEN the SOF byte is received
@@ -493,6 +502,7 @@ TEST(switch_to_waiting_header_reads_set_expected_size_to_4, setup_frame_receiver
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005, SU-SRS-FRAME-RECEIVER-110, SU-SRS-FRAME-RECEIVER-INT-002
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance in waiting_header state 
     - WHEN it receives a frame with an invalid header checksum
@@ -570,6 +580,7 @@ TEST(waiting_header_bad_crc, setup_frame_receiver_state_waiting_header)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance in waiting_header state
     - WHEN a frame with a valid header checksum is processed
@@ -618,6 +629,7 @@ TEST(waiting_header_good_crc, setup_frame_receiver_state_waiting_header)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance in waiting_header state
     - WHEN a frame with a valid header checksum but zero payload size is processed
@@ -669,6 +681,7 @@ TEST(waiting_header_good_crc_bad_payload_size, setup_frame_receiver_state_waitin
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN two frame receiver instances in waiting_header state
     - WHEN both process frames with different payload sizes
@@ -741,6 +754,7 @@ TEST(instance_independent_payload_size_store, setup_frame_receiver_state_waiting
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005, SU-SRS-FRAME-RECEIVER-115, SU-SRS-FRAME-RECEIVER-INT-001
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance in waiting_data state
     - WHEN it receives a frame with an invalid data checksum
@@ -823,6 +837,7 @@ TEST(waiting_data_wrong_crc, setup_frame_receiver_state_waiting_data)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance in waiting_data state
     - WHEN a frame with a valid data checksum is processed
@@ -865,6 +880,7 @@ TEST(waiting_data_good_crc, setup_frame_receiver_state_waiting_data)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance in valid_frame state
     - WHEN frame_receiver_update is called
@@ -881,6 +897,7 @@ TEST(valid_frame_does_nothing, setup_frame_receiver_state_valid_frame)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance
     - WHEN frame_receiver_update is called
@@ -898,6 +915,7 @@ TEST(checks_byte_available_before_read, setup_frame_receiver_init)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance in waiting_data state with multiple bytes available
     - WHEN frame_receiver_update is called
@@ -935,6 +953,7 @@ TEST(decode_all_available_byte, setup_frame_receiver_state_waiting_data)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: frame_receiver_update
 
     - GIVEN a frame receiver instance with an unknown state value
     - WHEN frame_receiver_update is called
@@ -969,6 +988,8 @@ TEST(frame_receiver_update_do_nothing_unkown_state, setup_frame_receiver_init)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-010
+    :checks_impl: frame_receiver_is_frame_available
+
 
     - GIVEN a frame receiver instance in valid_frame state
     - WHEN frame_receiver_is_frame_available is called
@@ -984,6 +1005,7 @@ TEST(frame_available_true, setup_frame_receiver_state_valid_frame)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-010
+    :checks_impl: frame_receiver_is_frame_available
 
     - GIVEN a frame receiver instance that is not in valid_frame state
     - WHEN frame_receiver_is_frame_available is called
@@ -999,6 +1021,8 @@ TEST(frame_available_false, setup_frame_receiver_state_waiting_data)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-020
+    :checks_impl: frame_receiver_copy_frame
+
 
     - GIVEN a frame receiver instance with a valid frame
     - WHEN frame_receiver_copy_frame is called with a buffer of sufficient size
@@ -1026,6 +1050,7 @@ TEST(copy_frame, setup_frame_receiver_state_valid_frame)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-020
+    :checks_impl: frame_receiver_copy_frame
 
     - GIVEN a frame receiver instance with a valid frame
     - WHEN frame_receiver_copy_frame is called
@@ -1054,6 +1079,7 @@ TEST(copy_frame_return_size, setup_frame_receiver_state_valid_frame)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-020
+    :checks_impl: frame_receiver_copy_frame
 
     - GIVEN a frame receiver instance with a valid frame
     - WHEN frame_receiver_copy_frame is called with a buffer smaller than the frame size
@@ -1080,6 +1106,7 @@ TEST(copy_frame_return_0, setup_frame_receiver_state_valid_frame)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-030
+    :checks_impl: frame_receiver_flush
 
     - GIVEN a frame receiver instance with bytes in its circular buffer
     - WHEN frame_receiver_flush is called
@@ -1103,6 +1130,7 @@ TEST(flush_buffer, setup_frame_receiver_init, teardown_overflow)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-100
+    :checks_impl: frame_receiver_flush
 
     - GIVEN a frame receiver instance with overflowed bytes in its circular buffer
     - WHEN frame_receiver_flush is called
@@ -1138,6 +1166,7 @@ TEST(flush_buffer_reports_overflow_count, setup_frame_receiver_init, teardown_ov
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-105
+    :checks_impl: frame_receiver_flush
 
     - GIVEN a frame receiver instance with bytes in its circular buffer
     - WHEN frame_receiver_flush is called
@@ -1171,6 +1200,7 @@ TEST(flush_buffer_reports_flush_count, setup_frame_receiver_init, teardown_overf
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-005
+    :checks_impl: compute_xor
 
     - GIVEN a buffer of data
     - WHEN compute_xor is called with a start value of 0
@@ -1187,6 +1217,7 @@ TEST(set_zero_xor_value, setup_frame_receiver_init, teardown_overflow)
     :layout: test
     :tags: dlt, swc, frame_receiver
     :checks: SU-SRS-FRAME-RECEIVER-040
+    :checks_impl: frame_receiver_get_uart_id
 
     - GIVEN a frame receiver instance
     - WHEN frame_receiver_get_uart_id is called

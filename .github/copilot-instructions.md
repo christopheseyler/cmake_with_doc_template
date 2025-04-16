@@ -101,6 +101,7 @@ The test case documentation uses a specific comment format with this form:
     :layout: test
     :tags: dnfw, ut, fsm_handlers, player_turn_ends
     :checks: < the requirement id checked by the test>
+    :checks_impl: < list of function/method tested in the unit test in the form of <module name>::<name of the function / method>>
 
     < the test description using the gherkin format like 
     - GIVEN xxx
@@ -239,13 +240,14 @@ $$ For each function/method od the module public API, you create an 'implementat
    :layout: impllayout
    :tags: <project name>,  swc, <module name>
    :implements: <link to requirement defined below>
-      
+
+   <Description of the function/method extracted from comment>
+
    .. code:: cpp 
 
 		<signature of the function/method>
 		
-   <Description of the function/method extracted from comment>
-   
+      
    <Description of the parameters, return value, exceptions, ... extracted from comment>
 
 

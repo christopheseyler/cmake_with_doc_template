@@ -68,6 +68,18 @@ Implementation Details
 Design Traceability
 -------------------
 
+Traceability Summary Table
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. needtable::
+    :filter: type == 'impl' and 'frame_receiver' in tags
+    :style: table
+    :columns: id; implements as "Implements"; impl_is_checked_by as "Is Checked By"
+    :colwidths: 30,40,30
+
+Design Items Description
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. impl:: frame_receiver_init
    :id: frame_receiver_init
    :layout: impllayout

@@ -44,8 +44,8 @@ Traceability Summary Table
 Design Items Description
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. impl:: app_fsm_master::app_fsm_boot_check
-   :id: app_fsm_master::app_fsm_boot_check
+.. impl:: app_fsm_boot_check
+   :id: app_fsm_boot_check
    :layout: impllayout
    :tags: app_fsm_master, swc
    :implements: DLT-SRS-APP-FSM-FUN-001
@@ -56,8 +56,8 @@ Design Items Description
 
    Handles the boot status check and transitions to the `app_fsm_initializers` state if no fatal error occurs.
 
-.. impl:: app_fsm_master::app_fsm_initializers
-   :id: app_fsm_master::app_fsm_initializers
+.. impl:: app_fsm_initializers
+   :id: app_fsm_initializers
    :layout: impllayout
    :tags: app_fsm_master, swc
    :implements: DLT-SRS-APP-FSM-FUN-011
@@ -68,8 +68,8 @@ Design Items Description
 
    Initializes the application and transitions to the `app_fsm_wait_for_start` state if no fatal error occurs.
 
-.. impl:: app_fsm_master::app_fsm_wait_for_start
-   :id: app_fsm_master::app_fsm_wait_for_start
+.. impl:: app_fsm_wait_for_start
+   :id: app_fsm_wait_for_start
    :layout: impllayout
    :tags: app_fsm_master, swc
    :implements: DLT-SRS-APP-FSM-FUN-005
@@ -80,8 +80,8 @@ Design Items Description
 
    Waits for the start order and transitions to the `app_fsm_updaters` state if the start order is received.
 
-.. impl:: app_fsm_master::app_fsm_updaters
-   :id: app_fsm_master::app_fsm_updaters
+.. impl:: app_fsm_updaters
+   :id: app_fsm_updaters
    :layout: impllayout
    :tags: app_fsm_master, swc
    :implements: DLT-SRS-APP-FSM-FUN-006

@@ -70,8 +70,8 @@ Traceability Summary Table
 Design Items Description
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. impl:: app_boot_status::app_boot_status_check
-   :id: app_boot_status::app_boot_status_check
+.. impl:: app_boot_status_check
+   :id: app_boot_status_check
    :layout: impllayout
    :tags: dlt, swc, app_boot_status
    :implements: SU-SRS-APP-00060, SU-SRS-APPFSM-00080

@@ -35,14 +35,14 @@ Traceability Summary Table
 .. needtable::
     :filter: type == 'impl' and 'app_task_sequencer' in tags
     :style: table
-    :columns: id; implements as "Implements"; is_checked_by as "Is Checked By"
+    :columns: id; implements as "Implements"; is_impl_checked_by as "Is Checked By"
     :colwidths: 30,40,30
 
 Design Items Description
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. impl:: app_task_sequencer::app_task_sequencer_register
-   :id: app_task_sequencer::app_task_sequencer_register
+.. impl:: app_task_sequencer_register
+   :id: app_task_sequencer_register
    :layout: impllayout
    :tags: app_task_sequencer, swc
    :implements: DLT-SRS-APP-TASK-SEQUENCER-ITF-001
@@ -63,8 +63,8 @@ Design Items Description
    Return Value:
      - None (void)
 
-.. impl:: app_task_sequencer::app_task_sequencer_init
-   :id: app_task_sequencer::app_task_sequencer_init
+.. impl:: app_task_sequencer_init
+   :id: app_task_sequencer_init
    :layout: impllayout
    :tags: app_task_sequencer, swc
    :implements: DLT-SRS-APP-TASK-SEQUENCER-ITF-002
@@ -81,8 +81,8 @@ Design Items Description
    Return Value:
      - None (void)
 
-.. impl:: app_task_sequencer::app_task_sequencer_update
-   :id: app_task_sequencer::app_task_sequencer_update
+.. impl:: app_task_sequencer_update
+   :id: app_task_sequencer_update
    :layout: impllayout
    :tags: app_task_sequencer, swc
    :implements: DLT-SRS-APP-TASK-SEQUENCER-ITF-003
