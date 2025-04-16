@@ -258,6 +258,22 @@ $$ SDD file template ends here $$
 
 ## Documentation template and generation
 
+### System Software Specification documentation (SSS)
+
+This document lists all system requirements allocated to the software. It uses sphinx-needs extension to write down the requirements using this format:
+
+.. list2need::
+
+    :types: sss
+    :tags: <project>, <requirement section>
+    :list-options:
+        :hide:
+
+    * (<requirement id with the form of SU-SSS-<module acronym in upper case>-<number with 5 digits, incremented by 10>>) <Requirement title>. 
+    <the requirement text using EARS syntax>
+    ((links="<list of links to the URS requirements>"))
+    * ... the next requirement ... 
+
 ### Software Unit Test and Integration Test documentation (SUITP)
 
 This document uses breathe to extract documentation 
