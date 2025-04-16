@@ -35,7 +35,7 @@ Requirements
 
 .. list2need:: 
     :types: srs
-    :tags: dlt, swc, app_fsm
+    :tags: su, swc, app_fsm
     :list-options:
         :hide:
     
@@ -56,7 +56,7 @@ Requirements
 
 
 .. needtable::
-    :filter: type == 'srs' and 'dlt' in tags and 'swc' in tags and 'app_fsm' in tags
+    :filter: type == 'srs' and 'su' in tags and 'swc' in tags and 'app_fsm' in tags
     :style: table
     :columns: id;title as "Label";content as "Description"; outgoing as "Uplink(s)"
     :colwidths: 10,12,64,10

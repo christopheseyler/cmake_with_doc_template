@@ -108,7 +108,7 @@ The test case documentation uses a specific comment format with this form:
     - THEN zzzz
     >
     
- @endut */
+ @endut*/
 
 ```
 
@@ -220,6 +220,18 @@ Design Traceability
 
 This section provides the traceability between the requirements and the implementation. 
 
+Traceability Summary Table
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. needtable::
+    :filter: type == 'impl' and <project> in tags and 'swc' in tags and <software component name> in tags
+    :style: table
+    :columns: id; implements as "Implements"; is_checked_by as "Is Checked By"
+    :colwidths: 30,40,30
+
+Design Items Description
+^^^^^^^^^^^^^^^^^^^^^^^^
+
 $$ For each function/method od the module public API, you create an 'implementation entry' following the form of: $$
 
 .. impl:: <module name>::<name of the function / method>
@@ -227,9 +239,9 @@ $$ For each function/method od the module public API, you create an 'implementat
    :layout: impllayout
    :tags: <project name>,  swc, <module name>
    :implements: <link to requirement defined below>
-   :is_checked_by: <link to the test case defined below>
-   
-   .. code:: cpp
+      
+   .. code:: cpp 
+
 		<signature of the function/method>
 		
    <Description of the function/method extracted from comment>

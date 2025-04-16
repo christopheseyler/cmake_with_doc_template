@@ -16,3 +16,21 @@ Unit Test Suites for App Boot Status Module
 .. doxygenfile:: tests/ut/app/ut-app_boot_status.c
     :sections: func
     :project: app
+
+Unit Test Suites for App Fsm Module 
+===========================================
+
+App Fsm Master
+--------------
+
+.. doxygenfile:: tests/ut/app/ut-app_fsm_master.c
+    :sections: func
+    :project: app
+
+
+App Task Sequencer
+------------------
+
+.. doxygenfile:: tests/ut/app/ut-app_task_sequencer.c
+    :sections: func
+    :project: app

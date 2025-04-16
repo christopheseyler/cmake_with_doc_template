@@ -66,41 +66,6 @@ Framework for top-level application handling
     :columns: id;title as "Label";content as "Description"; outgoing as "Uplink(s)"
     :colwidths: 10,12,64,10
 
-Application FSM
----------------
-
-.. list2need:: 
-    :types: srs
-    :tags: dlt, app_fsm
-    :list-options:
-        :hide:
-        :no_uplink: Design choice to uniformize the way to handle application top-level implementation.
-    
-    * (SU-SRS-APP-00030) Hardware initialization priority. 
-    The app fsm shall initialize the hardware initialization module before anything else.
-    * (SU-SRS-APP-00040) Hardware post initialization. 
-    When all cores are initialized, the app fsm shall post initialize the hardware.
-    * (SU-SRS-APP-00050) Event log initialization. 
-    The app fsm shall initialize the event log module before its main loop.
-    * (SU-SRS-APPFSM-00080) Boot status error handling. 
-    While boot status check, If an error is detected, the application shall switch to the fatal error state.
-    * (SU-SRS-APP-00070) Fatal error handling. 
-    The app fsm shall provide a unified way to handle fatal error.
-    * (SU-SRS-APP-00080) Synchronized starting sequence. 
-    The app fsm shall provide a unified way to synchronized starting sequence.
-    * (SU-SRS-APP-00090) Periodic task management. 
-    The app fsm shall provide a unified way to manage periodic task sequence.
-
-
-.. needtable::
-    :filter: type == 'srs' and app in tags and 'app_fsm' in content
-    :style: table
-    :columns: id;title as "Label";content as "Description"; outgoing as "Uplink(s)" 
-    :colwidths: 10,12,64,10
-
-
-
-
 Components Package 
 ==================
 

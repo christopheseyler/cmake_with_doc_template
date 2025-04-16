@@ -57,15 +57,18 @@ Design Traceability
 
 This section provides the traceability between the requirements and the implementation.
 
+Traceability Summary Table
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. needtable::
     :filter: type == 'impl' and 'dlt' in tags and 'swc' in tags and 'app_boot_status' in tags
     :style: table
     :columns: id; implements as "Implements"; is_checked_by as "Is Checked By"
     :colwidths: 30,40,30
 
-Ttest
 
-
+Design Items Description
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. impl:: app_boot_status::app_boot_status_check
    :id: app_boot_status::app_boot_status_check
@@ -88,7 +91,7 @@ Tests Suite
 -----------
 
 .. needtable::
-    :filter: type == 'unittest' and 'dlt' in tags and 'ut' in tags and 'app_boot_status' in tags
+    :filter: type == 'unittest' and 'app_boot_status' in tags
     :style: table
     :columns: id;title as "Description"; checks as "Validates"
     :colwidths: 10,80,10
