@@ -10,5 +10,9 @@ Unit Test Suites for Frame Receiver
     :sections: func
     :project: app
 
-Unit Test Suites for MyModule 
-=============================
+Unit Test Suites for App Boot Status Module 
+===========================================
+
+.. doxygenfile:: tests/ut/app/ut-app_boot_status.c
+    :sections: func
+    :project: app

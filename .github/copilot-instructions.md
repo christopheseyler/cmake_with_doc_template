@@ -168,7 +168,7 @@ $$ The requirements list uses this format $$
     :list-options:
         :hide:
     
-    * (<requirement id with the form of SRS-<module acronym in upper case>-<number with 5 digits, incremented by 10>>) <Requirement title>. 
+    * (<requirement id with the form of SU-SRS-<module acronym in upper case>-<number with 5 digits, incremented by 10>>) <Requirement title>. 
     <the requirement text using EARS syntax>
     * ... the next requirement ...
 
@@ -176,7 +176,7 @@ $$ The requirements list uses this format $$
  .. needtable::
     :filter: type == 'sss' and <project> in tags and 'swc' in tags and <software component name> in tags
     :style: table
-    :columns: id;title as "Label";content as "Description"; outgoing as "Uplink(s)"; 
+    :columns: id;title as "Label";content as "Description"; outgoing as "Uplink(s)" 
     :colwidths: 10,12,64,10
 
 
@@ -206,7 +206,7 @@ $$ Remainder of the requirements that drive the project $$
 .. needtable::
     :filter: type == 'sss' and <project> in tags and 'swc' in tags and <software component name> in tags
     :style: table
-    :columns: id;title as "Label";content as "Description"; outgoing as "Uplink(s)"; 
+    :columns: id;title as "Label";content as "Description"; outgoing as "Uplink(s)"
     :colwidths: 10,12,64,10
 
 Implementation Details

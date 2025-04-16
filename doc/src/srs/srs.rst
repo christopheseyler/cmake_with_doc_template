@@ -9,6 +9,9 @@ Software Requirements Specification (SRS)
    srs.changelog
    srs.applicable_documents
    srs.terms_acronyms_abbreviations
+
+   srs.static_architecture
+
    srs.swc
    srs.annexes
    

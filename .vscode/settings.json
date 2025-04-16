@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.rqtf": "xml",
+        "xlocale": "c"
+    }
+}

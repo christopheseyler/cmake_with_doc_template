@@ -197,7 +197,7 @@ static void set_instance_state(FrameReceiverInstanceIndex instance_index, Framer
 /** @utdef{UT-FRAME-RECEIVER-0130 | Frame receiver provides an initialization function}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-001
+    :checks: SU-SRS-FRAME-RECEIVER-001
 
     - GIVEN a frame receiver component
     - WHEN frame_receiver_init is called with valid parameters
@@ -222,7 +222,7 @@ TEST(provides_initialization_function)
 /** @utdef{UT-FRAME-RECEIVER-0020 | Frame receiver initializes the reception circular buffer}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-002
+    :checks: SU-SRS-FRAME-RECEIVER-002
 
     - GIVEN a frame receiver instance and a buffer with a specific size
     - WHEN frame_receiver_init is called 
@@ -253,7 +253,7 @@ TEST(provides_initialize_circular_buffer)
 /** @utdef{UT-FRAME-RECEIVER-0030 | Frame receiver configures the UART circular buffer}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-003
+    :checks: SU-SRS-FRAME-RECEIVER-003
 
     - GIVEN a frame receiver instance and a buffer with a specific size
     - WHEN frame_receiver_init is called
@@ -284,7 +284,7 @@ TEST(provides_initialize_configure_uart_circular_buffer)
 /** @utdef{UT-FRAME-RECEIVER-0040 | Frame receiver configures the UART line characteristics}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-004
+    :checks: SU-SRS-FRAME-RECEIVER-004
 
     - GIVEN a frame receiver instance
     - WHEN frame_receiver_init is called
@@ -319,7 +319,7 @@ TEST(provides_configure_uart_lines)
 /** @utdef{UT-FRAME-RECEIVER-0120 | Frame receiver initialization sets correct initial state}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-001
+    :checks: SU-SRS-FRAME-RECEIVER-001
 
     - GIVEN a frame receiver instance
     - WHEN frame_receiver_init is called
@@ -354,7 +354,7 @@ TEST(initialization_function_set_waiting_sof_state)
 /** @utdef{UT-FRAME-RECEIVER-0140 | Frame receiver provides an update function}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver component
     - WHEN frame_receiver_update is called with a valid instance
@@ -373,7 +373,7 @@ TEST(provides_update_function)
 /** @utdef{UT-FRAME-RECEIVER-0010 | Frame receiver reads bytes from rx buffer during update}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver instance initialized
     - WHEN the frame_receiver_update function is called
@@ -406,7 +406,7 @@ TEST(reads_1bytes_instance_rx_buffer, setup_frame_receiver_init)
 /** @utdef{UT-FRAME-RECEIVER-0050 | Frame receiver discards non-SoF bytes}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver instance in waiting_sof state
     - WHEN a byte that is not the SoF is read
@@ -429,7 +429,7 @@ TEST(waiting_sof_reads_discard_byte, setup_frame_receiver_init)
 /** @utdef{UT-FRAME-RECEIVER-0060 | Frame receiver changes state when SOF byte is detected}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver instance in waiting_sof state
     - WHEN the SOF byte (0x5A) is read
@@ -450,7 +450,7 @@ TEST(waiting_sof_reads_switch_state_when_meeting_sof, setup_frame_receiver_init)
 /** @utdef{UT-FRAME-RECEIVER-0090 | Frame receiver sets read index to 1 when switching to waiting_header state}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver instance in waiting_sof state
     - WHEN the SOF byte is received
@@ -471,7 +471,7 @@ TEST(switch_to_waiting_header_reads_set_red_idx_to_1, setup_frame_receiver_init)
 /** @utdef{UT-FRAME-RECEIVER-0150 | Frame receiver sets expected size to 4 when switching to waiting_header state}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver instance in waiting_sof state
     - WHEN the SOF byte is received
@@ -492,7 +492,7 @@ TEST(switch_to_waiting_header_reads_set_expected_size_to_4, setup_frame_receiver
 /** @utdef{UT-FRAME-RECEIVER-0070 | Frame receiver handles invalid header checksums}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005, DLT-SRS-FRAME-RECEIVER-FUN-110, DLT-SRS-FRAME-RECEIVER-INT-002
+    :checks: SU-SRS-FRAME-RECEIVER-005, SU-SRS-FRAME-RECEIVER-110, SU-SRS-FRAME-RECEIVER-INT-002
 
     - GIVEN a frame receiver instance in waiting_header state 
     - WHEN it receives a frame with an invalid header checksum
@@ -569,7 +569,7 @@ TEST(waiting_header_bad_crc, setup_frame_receiver_state_waiting_header)
 /** @utdef{UT-FRAME-RECEIVER-0100 | Frame receiver processes a valid frame header correctly}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver instance in waiting_header state
     - WHEN a frame with a valid header checksum is processed
@@ -617,7 +617,7 @@ TEST(waiting_header_good_crc, setup_frame_receiver_state_waiting_header)
 /** @utdef{UT-FRAME-RECEIVER-0160 | Frame receiver rejects frames with invalid payload size}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver instance in waiting_header state
     - WHEN a frame with a valid header checksum but zero payload size is processed
@@ -668,7 +668,7 @@ TEST(waiting_header_good_crc_bad_payload_size, setup_frame_receiver_state_waitin
 /** @utdef{UT-FRAME-RECEIVER-0170 | Frame receiver maintains independent payload size storage per instance}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN two frame receiver instances in waiting_header state
     - WHEN both process frames with different payload sizes
@@ -740,7 +740,7 @@ TEST(instance_independent_payload_size_store, setup_frame_receiver_state_waiting
 /** @utdef{UT-FRAME-RECEIVER-0080 | Frame receiver handles invalid data checksums}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005, DLT-SRS-FRAME-RECEIVER-FUN-115, DLT-SRS-FRAME-RECEIVER-INT-001
+    :checks: SU-SRS-FRAME-RECEIVER-005, SU-SRS-FRAME-RECEIVER-115, SU-SRS-FRAME-RECEIVER-INT-001
 
     - GIVEN a frame receiver instance in waiting_data state
     - WHEN it receives a frame with an invalid data checksum
@@ -822,7 +822,7 @@ TEST(waiting_data_wrong_crc, setup_frame_receiver_state_waiting_data)
 /** @utdef{UT-FRAME-RECEIVER-0110 | Frame receiver processes a valid frame correctly}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver instance in waiting_data state
     - WHEN a frame with a valid data checksum is processed
@@ -864,7 +864,7 @@ TEST(waiting_data_good_crc, setup_frame_receiver_state_waiting_data)
 /** @utdef{UT-FRAME-RECEIVER-0180 | Frame receiver does nothing when in valid_frame state}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver instance in valid_frame state
     - WHEN frame_receiver_update is called
@@ -880,7 +880,7 @@ TEST(valid_frame_does_nothing, setup_frame_receiver_state_valid_frame)
 /** @utdef{UT-FRAME-RECEIVER-0190 | Frame receiver checks byte availability before reading}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver instance
     - WHEN frame_receiver_update is called
@@ -897,7 +897,7 @@ TEST(checks_byte_available_before_read, setup_frame_receiver_init)
 /** @utdef{UT-FRAME-RECEIVER-0200 | Frame receiver decodes all available bytes in a single update}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver instance in waiting_data state with multiple bytes available
     - WHEN frame_receiver_update is called
@@ -934,7 +934,7 @@ TEST(decode_all_available_byte, setup_frame_receiver_state_waiting_data)
 /** @utdef{UT-FRAME-RECEIVER-0210 | Frame receiver handles unknown state gracefully}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a frame receiver instance with an unknown state value
     - WHEN frame_receiver_update is called
@@ -968,7 +968,7 @@ TEST(frame_receiver_update_do_nothing_unkown_state, setup_frame_receiver_init)
 /** @utdef{UT-FRAME-RECEIVER-0220 | Frame receiver correctly reports frame availability}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-010
+    :checks: SU-SRS-FRAME-RECEIVER-010
 
     - GIVEN a frame receiver instance in valid_frame state
     - WHEN frame_receiver_is_frame_available is called
@@ -983,7 +983,7 @@ TEST(frame_available_true, setup_frame_receiver_state_valid_frame)
 /** @utdef{UT-FRAME-RECEIVER-0230 | Frame receiver returns false when no frame is available}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-010
+    :checks: SU-SRS-FRAME-RECEIVER-010
 
     - GIVEN a frame receiver instance that is not in valid_frame state
     - WHEN frame_receiver_is_frame_available is called
@@ -998,7 +998,7 @@ TEST(frame_available_false, setup_frame_receiver_state_waiting_data)
 /** @utdef{UT-FRAME-RECEIVER-0240 | Frame receiver copies available frame to provided buffer}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-020
+    :checks: SU-SRS-FRAME-RECEIVER-020
 
     - GIVEN a frame receiver instance with a valid frame
     - WHEN frame_receiver_copy_frame is called with a buffer of sufficient size
@@ -1025,7 +1025,7 @@ TEST(copy_frame, setup_frame_receiver_state_valid_frame)
 /** @utdef{UT-FRAME-RECEIVER-0250 | Frame receiver updates size parameter when copying frame}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-020
+    :checks: SU-SRS-FRAME-RECEIVER-020
 
     - GIVEN a frame receiver instance with a valid frame
     - WHEN frame_receiver_copy_frame is called
@@ -1053,7 +1053,7 @@ TEST(copy_frame_return_size, setup_frame_receiver_state_valid_frame)
 /** @utdef{UT-FRAME-RECEIVER-0270 | Frame receiver handles insufficient buffer size}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-020
+    :checks: SU-SRS-FRAME-RECEIVER-020
 
     - GIVEN a frame receiver instance with a valid frame
     - WHEN frame_receiver_copy_frame is called with a buffer smaller than the frame size
@@ -1079,7 +1079,7 @@ TEST(copy_frame_return_0, setup_frame_receiver_state_valid_frame)
 /** @utdef{UT-FRAME-RECEIVER-0280 | Frame receiver flushes bytes from the circular buffer}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-030
+    :checks: SU-SRS-FRAME-RECEIVER-030
 
     - GIVEN a frame receiver instance with bytes in its circular buffer
     - WHEN frame_receiver_flush is called
@@ -1102,7 +1102,7 @@ TEST(flush_buffer, setup_frame_receiver_init, teardown_overflow)
 /** @utdef{UT-FRAME-RECEIVER-0290 | Frame receiver reports overflow count in HK}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-100
+    :checks: SU-SRS-FRAME-RECEIVER-100
 
     - GIVEN a frame receiver instance with overflowed bytes in its circular buffer
     - WHEN frame_receiver_flush is called
@@ -1137,7 +1137,7 @@ TEST(flush_buffer_reports_overflow_count, setup_frame_receiver_init, teardown_ov
 /** @utdef{UT-FRAME-RECEIVER-0300 | Frame receiver updates the flush count in the HK}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-105
+    :checks: SU-SRS-FRAME-RECEIVER-105
 
     - GIVEN a frame receiver instance with bytes in its circular buffer
     - WHEN frame_receiver_flush is called
@@ -1170,7 +1170,7 @@ TEST(flush_buffer_reports_flush_count, setup_frame_receiver_init, teardown_overf
 /** @utdef{UT-FRAME-RECEIVER-0310 | Frame receiver provides XOR computation with zero start value}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-005
+    :checks: SU-SRS-FRAME-RECEIVER-005
 
     - GIVEN a buffer of data
     - WHEN compute_xor is called with a start value of 0
@@ -1186,7 +1186,7 @@ TEST(set_zero_xor_value, setup_frame_receiver_init, teardown_overflow)
 /** @utdef{UT-FRAME-RECEIVER-0320 | Frame receiver provides access to UART ID for each instance}
     :layout: test
     :tags: dlt, swc, frame_receiver
-    :checks: DLT-SRS-FRAME-RECEIVER-FUN-040
+    :checks: SU-SRS-FRAME-RECEIVER-040
 
     - GIVEN a frame receiver instance
     - WHEN frame_receiver_get_uart_id is called

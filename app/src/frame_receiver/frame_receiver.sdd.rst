@@ -72,7 +72,7 @@ Design Traceability
    :id: frame_receiver_init
    :layout: impllayout
    :tags: dlt, swc, frame_receiver
-   :implements: DLT-SRS-FRAME-RECEIVER-FUN-002, DLT-SRS-FRAME-RECEIVER-FUN-003, DLT-SRS-FRAME-RECEIVER-FUN-004, DLT-SRS-FRAME-RECEIVER-FUN-001
+   :implements: SU-SRS-FRAME-RECEIVER-002, SU-SRS-FRAME-RECEIVER-003, SU-SRS-FRAME-RECEIVER-004, SU-SRS-FRAME-RECEIVER-001
    
    .. code:: c
    
@@ -89,7 +89,7 @@ Design Traceability
    :id: frame_receiver_update
    :layout: impllayout
    :tags: dlt, swc, frame_receiver
-   :implements: DLT-SRS-FRAME-RECEIVER-FUN-005
+   :implements: SU-SRS-FRAME-RECEIVER-005
    
    .. code:: c
    
@@ -104,7 +104,7 @@ Design Traceability
    :id: frame_receiver_is_frame_available
    :layout: impllayout
    :tags: dlt, swc, frame_receiver
-   :implements: DLT-SRS-FRAME-RECEIVER-FUN-010
+   :implements: SU-SRS-FRAME-RECEIVER-010
    
    .. code:: c
    
@@ -122,7 +122,7 @@ Design Traceability
    :id: frame_receiver_copy_frame
    :layout: impllayout
    :tags: dlt, swc, frame_receiver
-   :implements: DLT-SRS-FRAME-RECEIVER-FUN-020
+   :implements: SU-SRS-FRAME-RECEIVER-020
    
    .. code:: c
    
@@ -141,7 +141,7 @@ Design Traceability
    :id: frame_receiver_flush
    :layout: impllayout
    :tags: dlt, swc, frame_receiver
-   :implements: DLT-SRS-FRAME-RECEIVER-FUN-105
+   :implements: SU-SRS-FRAME-RECEIVER-105
    
    .. code:: c
    
@@ -156,7 +156,7 @@ Design Traceability
    :id: frame_receiver_get_uart_id
    :layout: impllayout
    :tags: dlt, swc, frame_receiver
-   :implements: DLT-SRS-FRAME-RECEIVER-FUN-040
+   :implements: SU-SRS-FRAME-RECEIVER-040
    
    .. code:: c
    

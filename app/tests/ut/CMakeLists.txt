@@ -21,4 +21,4 @@ function (dnfw_add_unittest unittest_name)
  
 endfunction()
 
-dnfw_add_unittest(ut_core_utils_fsm)
+
